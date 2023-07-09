@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
-            $table->string('quote', 255);
+            $table->string('name', 255);
             //$table->foreignId('author_id')->nullable()->constrained();
             //$table->foreignId('user_id')->nullable()->constrained();
             //$table->foreignId('category_id')->nullable()->constrained();

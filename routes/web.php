@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Route::get('/dashboard', function () {
@@ -30,5 +30,6 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('authors',\App\Http\Controllers\AuthorController::class)->except(['show']);
 Route::resource('categories', \App\Http\Controllers\CategoryController::class)->except(['show']);
+Route::resource('quotes', \App\Http\Controllers\QuoteController::class)->except(['show']);
 
 require __DIR__.'/auth.php';

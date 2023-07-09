@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('quotes', function (Blueprint $table) {
-            $table->foreignId('author_id')->constrained();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('categories_id')->constrained();
+            $table->foreignId('author_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->constrained()->onDelete('cascade');
+            $table->foreignId('categories_id')->nullable()->constrained()->onDelete('cascade');
         });
     }
 
@@ -24,6 +24,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('quotes', function (Blueprint $table) {
+            //
         });
     }
 };
