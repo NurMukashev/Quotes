@@ -1,9 +1,9 @@
 <header>
-    {{ config('app.name') }}
-    <ul>
-        <li><a href="{{ route('quotes.index') }}">Quotes</a></li>
-        <li><a href="{{ route('authors.index') }}">Authors</a></li>
-        <li><a href="{{ route('categories.index') }}">Categories</a></li>
+    <a class="mt-4 ml-4" href="{{ route('home') }}">{{ config('app.name') }}</a>
+    <ul class="mb-4 p-2">
+        <li><a class="inline-block" href="{{ route('quotes.index') }}">Quotes</a></li>
+        <li><a class="inline-block" href="{{ route('authors.index') }}">Authors</a></li>
+        <li><a class="inline-block" href="{{ route('categories.index') }}">Categories</a></li>
     </ul>
     <div class="mb-4 bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
         @if (Route::has('login'))
