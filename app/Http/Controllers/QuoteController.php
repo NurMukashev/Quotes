@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Author;
+use App\Models\Category;
 use App\Models\Quote;
 use Illuminate\Http\Request;
 
@@ -22,7 +24,9 @@ class QuoteController extends Controller
      */
     public function create()
     {
-        return view('quotes.create');
+        $authors = Author::all();
+        $categories = Category::all();
+        return view('quotes.create', ['authors' => $authors, 'categories' => $categories]);
     }
 
     /**
@@ -36,6 +40,8 @@ class QuoteController extends Controller
 
         $quote = new Quote();
         $quote->name = $request->name;
+        $quote->author_id = $request->author_id;
+        $quote->categories_id = $request->categories_id;
         $quote->save();
 
         return redirect()->route('quotes.index')->with('message', 'New quote created');
