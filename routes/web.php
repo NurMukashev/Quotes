@@ -32,4 +32,8 @@ Route::resource('authors',\App\Http\Controllers\AuthorController::class)->except
 Route::resource('categories', \App\Http\Controllers\CategoryController::class)->except(['show']);
 Route::resource('quotes', \App\Http\Controllers\QuoteController::class)->except(['show']);
 
+Route::get('quotes/{id}', function (string $id){
+    return new \App\Http\Resources\QuoteResource(\App\Models\Quote::findOrFail($id));
+});
+
 require __DIR__.'/auth.php';
