@@ -15,7 +15,7 @@
 
     @vite(['resources/css/app.css'])
 </head>
-<body>
+<body class="p-2">
     <x-header/>
     {{ $slot }}
 </body>
