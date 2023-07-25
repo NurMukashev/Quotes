@@ -9,7 +9,7 @@
             </div>
         @endif
 
-        <table class="w-1/2 font-medium">
+        <table class="mt-7 w-1/2 font-medium">
             <tbody>
                 @foreach($quotes as $quote)
                     <tr class="border-b-2">
