@@ -14,9 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::redirect('/', '/quotes')->name('home');
+
+Route::resource('authors',\App\Http\Controllers\AuthorController::class)->except(['show']);
+Route::resource('categories', \App\Http\Controllers\CategoryController::class)->except(['show']);
+Route::resource('quotes', \App\Http\Controllers\QuoteController::class)->except(['show']);
+
+Route::get('quotes/{id}', function (string $id){
+    return new \App\Http\Resources\QuoteResource(\App\Models\Quote::findOrFail($id));
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -26,14 +32,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-Route::resource('authors',\App\Http\Controllers\AuthorController::class)->except(['show']);
-Route::resource('categories', \App\Http\Controllers\CategoryController::class)->except(['show']);
-Route::resource('quotes', \App\Http\Controllers\QuoteController::class)->except(['show']);
-
-Route::get('quotes/{id}', function (string $id){
-    return new \App\Http\Resources\QuoteResource(\App\Models\Quote::findOrFail($id));
 });
 
 require __DIR__.'/auth.php';
