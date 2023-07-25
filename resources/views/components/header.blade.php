@@ -1,4 +1,4 @@
-<header class="p-2 text-gray-800 flex justify-between items-center border-b-2">
+<header class="mb-4 p-2 text-gray-800 flex justify-between items-center border-b-2">
     <div class="flex flex-start items-center">
         <a class="mx-3 uppercase text-2xl text-indigo-800" href="{{ route('home') }}">{{ config('app.name') }}</a>
         <ul class="p-2 text-lg flex justify-between items-center border-x-2">
