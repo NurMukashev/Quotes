@@ -14,7 +14,7 @@ class QuoteController extends Controller
      */
     public function index()
     {
-        $quotes = Quote::all();
+        $quotes = Quote::paginate(7);
 
         return view('quotes.index', ['quotes' => $quotes]);
     }
@@ -24,8 +24,8 @@ class QuoteController extends Controller
      */
     public function create()
     {
-        $authors = Author::all();
-        $categories = Category::all();
+        $authors = Author::orderBy('name')->get();
+        $categories = Category::orderBy('name')->get();
         return view('quotes.create', ['authors' => $authors, 'categories' => $categories]);
     }
 
@@ -61,7 +61,9 @@ class QuoteController extends Controller
     public function edit(string $id)
     {
         $quote = Quote::find($id);
-        return view('quotes.edit', ['quote' => $quote]);
+        $authors = Author::orderBy('name')->get();
+        $categories = Category::orderBy('name')->get();
+        return view('quotes.edit', ['quote' => $quote, 'authors' => $authors, 'categories' => $categories]);
     }
 
     /**
@@ -70,11 +72,13 @@ class QuoteController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255', 'unique:quotes,name']
+            'name' => ['required', 'string', 'max:255']
         ]);
 
         $quote = Quote::find($id);
         $quote->name = $request->name;
+        $quote->author_id = $request->author_id;
+        $quote->categories_id = $request->categories_id;
         $quote->save();
 
         return redirect()->route('quotes.index')->with('message', 'Quote updated');
