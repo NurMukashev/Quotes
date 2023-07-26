@@ -13,7 +13,7 @@
             <tbody>
             @foreach($authors as $author)
                 <tr class="border-b-2">
-                    <td>{{ $author->name }}</td>
+                    <td class="w-3/4">{{ $author->name }}</td>
                     <td><a href="{{ route('authors.edit', array('author'=>$author->id)) }}" class="m-2 px-3 py-1 border-2 rounded-full border-indigo-800 text-indigo-800 hover:text-white hover:bg-indigo-800"> Edit </a></td>
                     <td>
                         <form method="post" action="{{ route('authors.destroy', array('author'=>$author->id)) }}">
@@ -30,6 +30,10 @@
         <div class="mt-4">
             {{ $authors->onEachSide(1)->links() }}
         </div>
+
+        <a href="{{ route('authors.create') }}" class="m-5 px-3 py-1 border-2 rounded-full border-indigo-800 text-indigo-800 hover:text-white hover:bg-indigo-800">
+            Create author
+        </a>
 
     </main>
 </x-layout>

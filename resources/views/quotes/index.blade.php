@@ -26,8 +26,14 @@
                 @endforeach
             </tbody>
         </table>
+
         <div class="mt-4">
             {{ $quotes->onEachSide(1)->links() }}
         </div>
+
+        <a href="{{ route('quotes.create') }}" class="m-5 px-3 py-1 border-2 rounded-full border-indigo-800 text-indigo-800 hover:text-white hover:bg-indigo-800">
+            Create quote
+        </a>
+
     </main>
 </x-layout>
