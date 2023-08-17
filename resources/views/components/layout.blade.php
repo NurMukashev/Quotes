@@ -15,8 +15,13 @@
 
     @vite(['resources/css/app.css'])
 </head>
-<body class="p-2">
-    <x-header/>
-    {{ $slot }}
+<body>
+    <div class="flex flex-col min-h-screen">
+        <div class="grow">
+            <x-header/>
+            {{ $slot }}
+        </div>
+        <x-footer/>
+    </div>
 </body>
 </html>
