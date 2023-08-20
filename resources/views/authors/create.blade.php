@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Creating Author | Quotes</title>
-    </head>
-    <body>
-        <h2>Creating new Author</h2>
+<x-layout>
+
+    <main class="p-2">
+
+        <h2 class="m-4 text-xl text-center">Creating new Author</h2>
 
         @if($errors->any())
-            <div class="alert alert-danger">
+            <div class="text-red-600">
                 <ul>
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -18,11 +14,12 @@
             </div>
         @endif
 
-        <form method="post" action="{{ route('authors.store') }}" name="form">
+        <form method="post" action="{{ route('authors.store') }}" name="form" class="w-1/3 mx-auto flex flex-col">
             @csrf
-            <input type="text" placeholder="Name..." name="name">
-            <input type="submit" value="create">
+            <input type="text" placeholder="Name..." name="name" class="mb-4">
+            <input class="w-1/4 mx-auto px-3 py-1 border-2 rounded-full border-indigo-800 text-indigo-800 hover:text-white hover:bg-indigo-800" style="cursor:pointer" type="submit" value="create">
         </form>
 
-    </body>
-</html>
+    </main>
+
+</x-layout>

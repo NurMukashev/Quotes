@@ -1,10 +1,10 @@
 <x-layout>
     <main class="p-2">
 
-        <h2 class="m-2 text-xl">Creating new Quote</h2>
+        <h2 class="m-4 text-xl text-center">Creating new Quote</h2>
 
         @if($errors->any())
-            <div class="alert alert-danger">
+            <div class="text-red-600">
                 <ul>
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -13,7 +13,7 @@
             </div>
         @endif
 
-        <form method="post" action="{{ route('quotes.store') }}" class="flex flex-col items-start" name="form">
+        <form method="post" action="{{ route('quotes.store') }}" class="mx-auto w-1/2 flex flex-col" name="form">
 
             @csrf
             <textarea name="name" placeholder="Quote" autofocus cols="30" rows="5" class="mb-4"></textarea>
@@ -33,7 +33,7 @@
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
-            <input class="px-3 py-1 border-2 rounded-full border-indigo-800 text-indigo-800 hover:text-white hover:bg-indigo-800" style="cursor:pointer;" type="submit" value="create">
+            <input class="w-1/4 mx-auto px-3 py-1 border-2 rounded-full border-indigo-800 text-indigo-800 hover:text-white hover:bg-indigo-800" style="cursor:pointer;" type="submit" value="create">
         </form>
     </main>
 </x-layout>

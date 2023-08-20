@@ -1,10 +1,11 @@
 <x-layout>
+
     <main class="p-2">
 
         <h2 class="m-2 text-xl">Editing Quote</h2>
 
         @if($errors->any())
-            <div class="alert alert-danger">
+            <div class="text-red-600">
                 <ul>
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
@@ -39,5 +40,7 @@
             <input type="submit" value="edit" class="px-3 py-1 border-2 rounded-full border-indigo-800 text-indigo-800 hover:text-white hover:bg-indigo-800" style="cursor:pointer;">
 
         </form>
+
     </main>
+
 </x-layout>
