@@ -41,8 +41,10 @@ class QuoteController extends Controller
         $quote = new Quote();
         $quote->name = $request->name;
         $quote->author_id = $request->author_id;
-        $quote->categories_id = $request->categories_id;
         $quote->save();
+
+        $categoriesId = $request->categories;
+        $result = $quote->categories()->attach($categoriesId);
 
         return redirect()->route('quotes.index')->with('message', 'New quote created');
     }

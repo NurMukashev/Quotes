@@ -10,8 +10,8 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function quotes(): HasMany
+    public function quotes()
     {
-        return $this->hasMany(Quote::class);
+        return $this->belongsToMany(Quote::class, 'category_quote');
     }
 }

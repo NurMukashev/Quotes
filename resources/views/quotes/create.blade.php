@@ -26,13 +26,12 @@
                 @endforeach
             </select>
 
-            <label for="categories_select">Categories</label>
-            <select name="categories_id" id="categories_select" class="mb-4">
-                <option value="">-- Select the category --</option>
-                @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-            </select>
+            <label>Categories</label>
+            @foreach($categories as $category)
+                <label>
+                    <input type="checkbox" name="categories[]" value="{{ $category->id }}"> {{ $category->name }}
+                </label>
+            @endforeach
             <input class="w-1/4 mx-auto px-3 py-1 border-2 rounded-full border-indigo-800 text-indigo-800 hover:text-white hover:bg-indigo-800" style="cursor:pointer;" type="submit" value="create">
         </form>
     </main>
